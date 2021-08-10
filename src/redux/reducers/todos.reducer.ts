@@ -6,8 +6,8 @@ export interface TodosState {
 }
 
 const INITIAL_STATE: TodosState = {
-  todos: [],
   isFetching: false,
+  todos: [],
 };
 
 export const todosReducer = (
