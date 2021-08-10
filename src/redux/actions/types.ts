@@ -1,8 +1,19 @@
-import { FetchTodosAction, DeleteTodoAction } from "./todos.actions";
+import {
+  FetchTodosStartAction,
+  FetchTodosSuccessAction,
+  DeleteTodoAction,
+  ClearTodosAction,
+} from "./todos.actions";
 
-export enum ActionTypes {
-  FetchTodos,
+export enum TodosActionTypes {
+  FetchTodosStart,
+  FetchTodosSuccess,
   DeleteTodo,
+  ClearTodos,
 }
 
-export type Action = FetchTodosAction | DeleteTodoAction;
+export type TodosActions =
+  | FetchTodosStartAction
+  | FetchTodosSuccessAction
+  | DeleteTodoAction
+  | ClearTodosAction;

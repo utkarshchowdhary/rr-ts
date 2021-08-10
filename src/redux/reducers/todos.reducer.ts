@@ -1,11 +1,31 @@
-import { Todo, ActionTypes, Action } from "../actions";
+import { Todo, TodosActionTypes, TodosActions } from "../actions";
 
-export const todosReducer = (state: Todo[] = [], action: Action) => {
+export interface TodosState {
+  isFetching: boolean;
+  todos: Todo[];
+}
+
+const INITIAL_STATE: TodosState = {
+  todos: [],
+  isFetching: false,
+};
+
+export const todosReducer = (
+  state = INITIAL_STATE,
+  action: TodosActions
+): TodosState => {
   switch (action.type) {
-    case ActionTypes.FetchTodos:
-      return action.payload;
-    case ActionTypes.DeleteTodo:
-      return state.filter((todo: Todo) => todo.id !== action.payload);
+    case TodosActionTypes.FetchTodosStart:
+      return { ...state, isFetching: true };
+    case TodosActionTypes.FetchTodosSuccess:
+      return { ...state, isFetching: false, todos: action.payload };
+    case TodosActionTypes.DeleteTodo:
+      return {
+        ...state,
+        todos: state.todos.filter((todo: Todo) => todo.id !== action.payload),
+      };
+    case TodosActionTypes.ClearTodos:
+      return { ...state, todos: [] };
     default:
       return state;
   }
