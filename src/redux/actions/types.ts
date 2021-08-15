@@ -6,10 +6,10 @@ import {
 } from "./todos.actions";
 
 export enum TodosActionTypes {
-  FetchTodosStart,
-  FetchTodosSuccess,
-  DeleteTodo,
-  ClearTodos,
+  FetchTodosStart = "FETCH_TODOS_START",
+  FetchTodosSuccess = "FETCH_TODOS_SUCCESS",
+  DeleteTodo = "DELETE_TODO",
+  ClearTodos = "CLEAR_TODOS",
 }
 
 export type TodosActions =
